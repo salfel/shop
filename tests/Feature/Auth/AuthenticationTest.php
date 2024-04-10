@@ -4,7 +4,7 @@ use App\Models\User;
 use Livewire\Volt\Volt;
 
 test('login screen can be rendered', function () {
-    $response = $this->get('/login');
+    $response = $this->get(route('login', absolute: false));
 
     $response
         ->assertOk()
@@ -48,7 +48,7 @@ test('navigation menu can be rendered', function () {
 
     $this->actingAs($user);
 
-    $response = $this->get('/');
+    $response = $this->get(route('home'));
 
     $response
         ->assertOk()
@@ -66,7 +66,7 @@ test('users can logout', function () {
 
     $component
         ->assertHasNoErrors()
-        ->assertRedirect('/');
+        ->assertRedirect(route('home', absolute: false));
 
     $this->assertGuest();
 });
