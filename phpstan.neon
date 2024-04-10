@@ -12,5 +12,3 @@ parameters:
     	-
     		message: '#^Undefined variable\: \$this$#'
     		path: tests/*
-
-
