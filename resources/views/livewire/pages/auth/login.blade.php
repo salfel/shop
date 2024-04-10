@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Session;
 use Livewire\Attributes\Layout;
 use Livewire\Volt\Component;
 
-new #[Layout('layouts.guest')] class extends Component
+new #[Layout('layouts.guest', ["title" => "Login"])] class extends Component
 {
     public LoginForm $form;
 
@@ -20,7 +20,14 @@ new #[Layout('layouts.guest')] class extends Component
 
         Session::regenerate();
 
-        $this->redirectIntended(default: route('dashboard', absolute: false), navigate: true);
+        $this->redirectIntended(default: route('home', absolute: false), navigate: true);
     }
 }; ?>
 
+<form class="w-96 space-y-6" wire:submit="login">
+    <x-input wire:model="form.email" label="Email" placeholder="example@email.com" />
+
+    <x-inputs.password wire:model="form.password" label="Password" />
+
+    <x-button primary label="Login" class="w-full" type="submit" />
+</form>

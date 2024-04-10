@@ -17,8 +17,10 @@
         <wireui:scripts />
     </head>
     <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
-            <main>
+        <div class="min-h-screen bg-gray-100 dark:bg-gray-900 dark:text-white">
+            <livewire:layouts.navigation />
+
+            <main class="mx-auto max-w-3xl px-5">
                 {{ $slot }}
             </main>
         </div>
