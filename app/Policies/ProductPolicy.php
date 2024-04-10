@@ -22,26 +22,26 @@ class ProductPolicy
 
     public function create(User $user): bool
     {
-        return true;
+        return $user->is_admin;
     }
 
-    public function update(User $user, Product $product): bool
+    public function update(User $user): bool
     {
-        return $user->id == $product->user_id;
+        return $user->is_admin;
     }
 
-    public function delete(User $user, Product $product): bool
+    public function delete(User $user): bool
     {
-        return $user->id == $product->user_id;
+        return $user->is_admin;
     }
 
-    public function restore(User $user, Product $product): bool
+    public function restore(User $user): bool
     {
-        return $user->id == $product->user_id;
+        return $user->is_admin;
     }
 
-    public function forceDelete(User $user, Product $product): bool
+    public function forceDelete(User $user): bool
     {
-        return $user->id == $product->user_id;
+        return $user->is_admin;
     }
 }
