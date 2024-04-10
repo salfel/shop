@@ -5,6 +5,12 @@ parameters:
     paths:
         - app/
         - database/
+        - tests/
     level: 9
+
+    ignoreErrors:
+    	-
+    		message: '#^Undefined variable\: \$this$#'
+    		path: tests/*
 
 
