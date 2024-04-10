@@ -14,15 +14,11 @@ class ProductController extends Controller
 
     public function index(): View
     {
-        $this->authorize('viewAny', Product::class);
-
         return view('products.index');
     }
 
     public function show(Product $product): View
     {
-        $this->authorize('view', $product);
-
         return view('products.show', [
             'product' => $product,
         ]);
