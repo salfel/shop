@@ -24,9 +24,13 @@ new class extends Component {
 
     <nav class="flex items-center gap-5">
         @auth
+            <a href="" wire:navigate>
+                <x-icon name="shopping-cart" class="size-6" solid />
+            </a>
+
             <x-dropdown>
                 <x-slot name="trigger">
-                    <x-icon name="user-circle" class="size-6" />
+                    <x-icon name="user-circle" class="size-6" solid />
                 </x-slot>
 
                 <x-dropdown.header label="{{ auth()->user()->name }}">
