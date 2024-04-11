@@ -21,13 +21,18 @@ class ProductFactory extends Factory
      */
     public function definition(): array
     {
+        $images = [];
+        for ($i = 0; $i < 3; $i++) {
+            $images[] = $this->faker->imageUrl();
+        }
+
         return [
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
             'name' => 'Product '.$this->faker->randomNumber(3),
             'description' => $this->faker->text(),
             'price' => $this->faker->randomFloat(min: 10, max: 100),
-            'images' => $this->faker->imageUrl(),
+            'images' => $images,
             'quantity' => $this->faker->randomNumber(2, true),
         ];
     }
