@@ -31,7 +31,7 @@ class ProductFactory extends Factory
             'updated_at' => Carbon::now(),
             'name' => 'Product '.$this->faker->randomNumber(3),
             'description' => $this->faker->text(),
-            'price' => $this->faker->randomFloat(min: 10, max: 100),
+            'price' => $this->faker->randomFloat(2, 10, 100),
             'images' => $images,
             'quantity' => $this->faker->randomNumber(2, true),
         ];
