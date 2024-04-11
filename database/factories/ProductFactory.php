@@ -24,7 +24,7 @@ class ProductFactory extends Factory
         return [
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
-            'name' => $this->faker->name(),
+            'name' => 'Product '.$this->faker->randomNumber(3),
             'description' => $this->faker->text(),
             'price' => $this->faker->randomFloat(min: 10, max: 100),
             'images' => $this->faker->imageUrl(),
