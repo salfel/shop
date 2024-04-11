@@ -17,10 +17,10 @@
         <wireui:scripts />
     </head>
     <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100 dark:bg-gray-900 dark:text-white">
+        <div class="flex flex-col min-h-screen bg-gray-100 dark:bg-gray-900 dark:text-white">
             <livewire:layouts.navigation />
 
-            <main class="mx-auto max-w-3xl px-5">
+            <main {{ $attributes->merge(['class' => 'w-full flex-1 mx-auto max-w-3xl px-5 mb-8']) }}>
                 {{ $slot }}
             </main>
         </div>

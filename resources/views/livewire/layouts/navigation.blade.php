@@ -15,7 +15,7 @@ new class extends Component {
 
 ?>
 
-<header class="flex items-center justify-between mx-auto sm:max-w-3xl px-5 py-4">
+<header class="w-full flex items-center justify-between mx-auto sm:max-w-3xl px-5 py-4">
     <a href="{{ route("home") }}" wire:navigate>
         <h2 class="text-xl font-semibold">
             Shop
