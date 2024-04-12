@@ -9,6 +9,11 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 class Cart extends Model
 {
     /**
+     * @var array<int, string>
+     */
+    protected $fillable = ['user_id'];
+
+    /**
      * @return BelongsTo<User, Cart>
      */
     public function user(): BelongsTo
