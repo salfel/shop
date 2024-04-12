@@ -16,6 +16,7 @@ new class extends Component {
         CartProduct::create([
             'product_id' => $this->id,
             'cart_id' => $cart->id,
+            'amount' => 1
         ]);
 
         $this->redirectRoute('cart');
