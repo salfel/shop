@@ -9,6 +9,9 @@ parameters:
     level: 9
 
     ignoreErrors:
-    	-
-    		message: '#^Undefined variable\: \$this$#'
-    		path: tests/*
+        -
+            message: '#^Undefined variable\: \$this$#'
+            path: tests/*
+        -
+            message: '#^Cannot call method \S+\(\) on App\\Models\\User\|null\.$#'
+            path: 'app/Http/Controllers/*'

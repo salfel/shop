@@ -46,8 +46,20 @@ class User extends Authenticatable
         ];
     }
 
+    /**
+     * @return HasOne<Cart>
+     */
     public function cart(): HasOne
     {
         return $this->hasOne(Cart::class);
+    }
+
+    protected static function booted(): void
+    {
+        static::created(function(User $user) {
+            Cart::create([
+                'user_id' => $user->id,
+            ]);
+        });
     }
 }
