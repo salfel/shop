@@ -31,6 +31,8 @@ new class extends Component {
         }
 
         $this->cartProduct->update(['amount' => $this->amount]);
+
+        $this->dispatch('updated-cart');
     }
 }
 
