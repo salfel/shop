@@ -45,22 +45,22 @@ new class extends Component {
 ?>
 
 <div>
-    <table class="w-full">
         @if ($products->isEmpty())
             <p>No products are in your cart yet</p>
         @else
-            <tr class="[&>th]:text-start mb-2">
-                <th>Name</th>
-                <th>Price</th>
-                <th>Amount</th>
-                <th>Total</th>
-            </tr>
-            @foreach($products as $product)
-                <livewire:cart.product-row :product="$product" :key="$product->id"/>
-            @endforeach
+            <table class="w-full">
+                <tr class="[&>th]:text-start mb-2">
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Amount</th>
+                    <th>Total</th>
+                </tr>
+                @foreach($products as $product)
+                    <livewire:cart.product-row :product="$product" :key="$product->id"/>
+                @endforeach
+            </table>
 
             <p class="text-end text-lg font-medium mt-3">Total: {{ $total }}</p>
         @endif
-    </table>
 </div>
 
