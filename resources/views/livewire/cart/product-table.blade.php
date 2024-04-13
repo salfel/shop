@@ -38,7 +38,7 @@ new class extends Component {
             ->join('products', 'cart_product.product_id', '=', 'products.id')
             ->select(DB::raw('SUM(cart_product.amount * products.price) as total_price'))
             ->first()
-            ->total_price;
+            ->total_price ?? 0;
     }
 }
 
@@ -58,9 +58,9 @@ new class extends Component {
             @foreach($products as $product)
                 <livewire:cart.product-row :product="$product" :key="$product->id"/>
             @endforeach
+
+            <p class="text-end text-lg font-medium mt-3">Total: {{ $total }}</p>
         @endif
     </table>
-
-    <p class="text-end text-lg font-medium mt-3">Total: {{ $total }}</p>
 </div>
 
