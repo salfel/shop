@@ -22,7 +22,7 @@ new class extends Component {
         $this->setAmount();
     }
 
-    public function removeProduct(int $productId, int $pivotId): void
+    public function removeProduct(int $pivotId): void
     {
         CartProduct::find($pivotId)->delete();
 
