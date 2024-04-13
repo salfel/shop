@@ -23,6 +23,8 @@
             <main {{ $attributes->merge(['class' => 'w-full flex-1 mx-auto max-w-3xl px-5 mb-8']) }}>
                 {{ $slot }}
             </main>
+
+            <x-notifications />
         </div>
     </body>
 </html>

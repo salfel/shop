@@ -6,8 +6,10 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use JetBrains\PhpStorm\NoReturn;
 use Livewire\Volt\Component;
+use WireUi\Traits\Actions;
 
 new class extends Component {
+    use Actions;
 
     public int $id;
 
@@ -30,7 +32,11 @@ new class extends Component {
             ]);
         }
 
-        $this->redirectRoute('cart');
+        $this->notification([
+            'title' => 'Product added to cart',
+            'description' => 'The product has been added to your cart',
+            'icon' => 'success'
+        ]);
     }
 }
 
