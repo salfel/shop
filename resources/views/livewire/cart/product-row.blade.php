@@ -21,13 +21,8 @@ new class extends Component {
 
     public function updateAmount(int $amount = null): void
     {
-        if ($amount != null) {
-            if ($amount < 1) {
-                $this->cartProduct->delete();
-                return;
-            } else {
-                $this->amount = $amount;
-            }
+        if ($amount != null && $amount >= 1) {
+            $this->amount = $amount;
         }
 
         $this->cartProduct->update(['amount' => $this->amount]);
@@ -49,7 +44,7 @@ new class extends Component {
     <td>
         <div class="relative inline-flex items-center">
             <x-button size="xs" class="absolute z-10 border-none left-1" wire:click="updateAmount({{ $amount - 1  }})"
-                      icon="minus" x-bind:disabled="$wire.amount <= 1"/>
+                      icon="minus" />
 
             <x-input min="1" class="w-28 h-8 text-center number-input" type="number" wire:model.live="amount"
                      wire:change="updateAmount"/>
