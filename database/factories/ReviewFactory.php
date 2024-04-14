@@ -13,12 +13,14 @@ class ReviewFactory extends Factory
 {
     protected $model = Review::class;
 
+    private array $ratings = [1, 2, 3, 4, 5];
+
     public function definition(): array
     {
         return [
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
-            'rating' => $this->faker->randomNumber(),
+            'rating' => $this->faker->randomElement($this->ratings),
             'body' => $this->faker->text(),
         ];
     }

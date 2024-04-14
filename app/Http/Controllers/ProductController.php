@@ -21,8 +21,11 @@ class ProductController extends Controller
 
     public function show(Product $product): View
     {
+        $reviews = $product->reviews()->with('user')->paginate(12);
+
         return view('products.show', [
             'product' => $product,
+            'reviews' => $reviews,
         ]);
     }
 
