@@ -24,11 +24,7 @@
     <div class="pt-8 space-y-6">
         <h3 class="text-xl font-medium">Reviews</h3>
 
-        <div class="grid grid-cols-3 gap-6">
-            @foreach($reviews as $review)
-                <x-review :review="$review" />
-            @endforeach
-        </div>
+        <livewire:products.reviews :reviews="$reviews->items()" :product="$product" />
     </div>
 
     {{ $reviews->links() }}
