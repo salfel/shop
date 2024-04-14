@@ -29,12 +29,21 @@ test('cart screen can be rendered', function () {
 test('product can be added to cart', function () {
     $product = Product::factory()->create();
 
-    Volt::test('products.add-cart', ['id' => $product->id])
+    $component = Volt::test('products.add-cart', ['id' => $product->id])
         ->call('addToCart');
 
     $this->assertDatabaseHas('cart_product', [
         'product_id' => $product->id,
         'cart_id' => $this->user->cart->id,
+        'amount' => 1,
+    ]);
+
+    $component->call('addToCart');
+
+    $this->assertDatabaseHas('cart_product', [
+        'product_id' => $product->id,
+        'cart_id' => $this->user->cart->id,
+        'amount' => 2,
     ]);
 });
 
