@@ -17,7 +17,7 @@ new class extends Component {
     {
         $cart = Auth::user()->cart;
 
-        $cartProduct = CartProduct::where('product_id', $this->id)->where('cart_id', $this->id)->first();
+        $cartProduct = CartProduct::where('product_id', $this->id)->where('cart_id', $cart->id)->first();
 
         if ($cartProduct == null) {
             CartProduct::create([
@@ -30,6 +30,7 @@ new class extends Component {
                 'amount' => $cartProduct->amount + 1
             ]);
         }
+        Log::info('product added to cart', [$cartProduct]);
 
         $this->notification([
             'title' => 'Product added to cart',
