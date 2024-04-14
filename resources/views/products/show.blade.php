@@ -30,4 +30,6 @@
             @endforeach
         </div>
     </div>
+
+    {{ $reviews->links() }}
 </x-app-layout>
