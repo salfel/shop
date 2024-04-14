@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 
 class CartController extends Controller
 {
-    public function __invoke(): View
+    public function show(): View
     {
         $user = Auth::user();
 
@@ -16,5 +17,14 @@ class CartController extends Controller
         return view('cart', [
             'cart' => $cart,
         ]);
+    }
+
+    public function delete(): RedirectResponse
+    {
+        $user = Auth::user();
+
+        $user->cart->products()->detach();
+
+        return redirect()->route('home');
     }
 }

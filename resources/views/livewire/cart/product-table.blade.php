@@ -60,7 +60,14 @@ new class extends Component {
                 @endforeach
             </table>
 
-            <p class="text-end text-lg font-medium mt-3">Total: {{ $total }}</p>
+            <div class="flex justify-between items-center mt-6">
+                <a href="{{ route("checkout") }}">
+                    <x-button primary label="Checkout" />
+
+                </a>
+
+                <span class="text-end text-lg font-medium mt-3">Total: {{ $total }}</span>
+            </div>
         @endif
 </div>
 
