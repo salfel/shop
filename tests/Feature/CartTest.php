@@ -47,6 +47,7 @@ test('product can be added to cart', function () {
     ]);
 });
 
+// @phpstan-ignore-next-line
 test('User can increase amount of cart', function (int $amount) {
     $product = Product::factory()->create();
 
@@ -84,7 +85,7 @@ test('user can delete product from cart', function () {
     $cartProduct = CartProduct::where([
         'product_id' => $product->id,
         'cart_id' => $this->user->cart->id,
-    ])->first();
+    ])->firstOrFail();
 
     Volt::test('cart.product-table', ['cart' => $this->user->cart])
         ->assertSeeVolt('cart.product-row')
