@@ -30,7 +30,6 @@ new class extends Component {
                 'amount' => $cartProduct->amount + 1
             ]);
         }
-        Log::info('product added to cart', [$cartProduct]);
 
         $this->notification([
             'title' => 'Product added to cart',
