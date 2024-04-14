@@ -17,8 +17,7 @@
             <!-- TODO: Favors this product -->
             <x-button.circle secondary icon="heart" size="lg" />
 
-            <!-- TODO: Add Cart Routes  -->
-            <x-button primary size="lg" label="Add to Cart" />
+            <livewire:products.add-cart id="{{ $product->id }}" />
         </div>
     </div>
 </x-app-layout>

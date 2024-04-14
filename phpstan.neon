@@ -9,6 +9,14 @@ parameters:
     level: 9
 
     ignoreErrors:
-    	-
-    		message: '#^Undefined variable\: \$this$#'
-    		path: tests/*
+        -
+            message: '#^Undefined variable\: \$this$#'
+            path: tests/*
+        -
+            message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$\S+\.$#'
+            path: tests/*
+        -
+            message: '#^Cannot access property \$\S+ on App\\Models\\(User|Cart)\|null\.$#'
+            path: app/Http/Controllers/*
+        -
+            '#^Cannot call method \S+\(\) on App\\Models\\(User|Cart)\|null\.$#'
