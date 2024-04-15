@@ -21,11 +21,5 @@
         </div>
     </div>
 
-    <div class="pt-8 space-y-6">
-        <h3 class="text-xl font-medium">Reviews</h3>
-
-        <livewire:products.reviews :reviews="$reviews->items()" :product="$product" />
-    </div>
-
-    {{ $reviews->links() }}
+    <livewire:products.reviews :paginator="$reviews" :product="$product" />
 </x-app-layout>

@@ -13,6 +13,9 @@ class ReviewFactory extends Factory
 {
     protected $model = Review::class;
 
+    /**
+     * @var int[]
+     */
     private array $ratings = [1, 2, 3, 4, 5];
 
     public function definition(): array
