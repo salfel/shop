@@ -23,8 +23,7 @@ new class extends Component {
         $this->links = $paginator->links()->toHtml();
     }
 
-    #[On('created-review')]
-    public function loadReviews(bool $preserve = false): void
+    public function loadReviews(): void
     {
         $paginator = $this->product->reviews()->with('user')->orderByDesc('created_at')
             ->paginate(12, pageName: 'reviews_page', page: 1);
@@ -41,7 +40,7 @@ new class extends Component {
     <h3 class="text-xl font-medium">Reviews</h3>
 
     @auth
-        <livewire:products.review-form :product="$product"/>
+        <livewire:products.review-form :product="$product" @created-review="loadReviews"/>
     @endauth
 
     <div class="space-y-6">
