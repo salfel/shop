@@ -1,23 +1,17 @@
 <?php
 
 use Illuminate\Support\Facades\Log;
+use Livewire\Attributes\Modelable;
 use Livewire\Attributes\On;
 use Livewire\Volt\Component;
 
 new class extends Component {
-    public int $rating = 1;
+    #[Modelable]
+    public int $value = 1;
 
-    public function updateRating(int $rating): void
+    public function updateRating(int $value): void
     {
-        $this->rating = $rating;
-
-        $this->dispatch('updated-rating', rating: $rating);
-    }
-
-    #[On('created-review')]
-    public function resetRating(): void
-    {
-        $this->rating = 1;
+        $this->value = $value;
     }
 }
 
@@ -26,7 +20,7 @@ new class extends Component {
 <div class="flex gap-1">
     @foreach(range(1, 5) as $i)
         <button wire:click="updateRating({{ $i }})" type="button" wire:key="{{ $i }}">
-            <x-icon name="star" class="size-5 text-yellow-500" solid="{{ $i <= $rating }}"/>
+            <x-icon name="star" class="size-5 text-yellow-500" solid="{{ $i <= $value }}"/>
         </button>
     @endforeach
 </div>

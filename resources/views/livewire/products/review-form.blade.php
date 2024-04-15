@@ -38,7 +38,7 @@ new class extends Component {
     </div>
 
     <form class="space-y-4" wire:submit="send">
-        <livewire:products.rating-input :rating="1" />
+        <livewire:products.rating-input wire:model="form.rating" />
 
         <x-textarea wire:model="form.body" rows="3" />
 
