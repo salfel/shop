@@ -20,6 +20,10 @@ class DatabaseSeeder extends Seeder
             'is_admin' => true,
         ]);
 
+        User::factory(5)->create();
+
         Product::factory(20)->create();
+
+        $this->call(ReviewSeeder::class);
     }
 }
