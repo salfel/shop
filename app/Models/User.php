@@ -57,7 +57,7 @@ class User extends Authenticatable
     }
 
     /**
-     * @return HasManyThrough<Product, Favourite>
+     * @return HasManyThrough<Product>
      */
     public function favourites(): HasManyThrough
     {
