@@ -34,7 +34,8 @@ new class extends Component {
                 </x-slot>
 
                 <x-dropdown.header label="{{ auth()->user()->name }}">
-                    <x-dropdown.item wire:click="logout" label="Logout" class="!text-red-500" />
+                    <x-dropdown.item href="{{ route('favourites') }}" label="Favourites" />
+                    <x-dropdown.item wire:click="logout" label="Logout" separator />
                 </x-dropdown.header>
             </x-dropdown>
         @else

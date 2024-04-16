@@ -14,8 +14,7 @@
         </div>
 
         <div class="flex items-center gap-3">
-            <!-- TODO: Favors this product -->
-            <x-button.circle secondary icon="heart" size="lg" />
+            <livewire:products.favourite-button :product="$product" />
 
             <livewire:products.add-cart id="{{ $product->id }}" />
         </div>
