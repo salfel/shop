@@ -19,4 +19,7 @@ parameters:
             message: '#^Cannot access property \$\S+ on App\\Models\\(User|Cart)\|null\.$#'
             path: app/Http/Controllers/*
         -
+            message: '#^Cannot access property \$\S+ on App\\Models\\(User|Cart)\|null\.$#'
+            path: tests/*
+        -
             '#^Cannot call method \S+\(\) on App\\Models\\(User|Cart)\|null\.$#'
