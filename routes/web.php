@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\FavouriteController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\WebhookController;
 use Illuminate\Support\Facades\Route;
@@ -16,6 +17,10 @@ Route::get('cart', [CartController::class, 'show'])
 Route::delete('cart', [CartController::class, 'delete'])
     ->middleware('auth')
     ->name('cart.delete');
+
+Route::get('favourites', FavouriteController::class)
+    ->middleware('auth')
+    ->name('favourites');
 
 Route::resource('products', ProductController::class)
     ->except('index');

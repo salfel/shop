@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -55,9 +56,17 @@ class User extends Authenticatable
         return $this->hasOne(Cart::class);
     }
 
+    /**
+     * @return HasManyThrough<Product>
+     */
+    public function favourites(): HasManyThrough
+    {
+        return $this->hasManyThrough(Product::class, Favourite::class, 'user_id', 'id', 'id', 'product_id');
+    }
+
     protected static function booted(): void
     {
-        static::created(function(User $user) {
+        static::created(function (User $user) {
             Cart::create([
                 'user_id' => $user->id,
             ]);
