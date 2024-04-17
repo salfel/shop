@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\WebhookController;
 use App\Models\CartProduct;
 use App\Models\Product;
 use App\Models\User;
@@ -95,4 +96,27 @@ test('user can delete product from cart', function () {
         'product_id' => $product->id,
         'cart_id' => $this->user->cart->id,
     ]);
+});
+
+test('checkout works as expected', function () {
+    $payload = ['data' => ['object' => ['customer_details' => ['email' => $this->user->email]]]];
+
+    $products = Product::factory(3)->create();
+
+    foreach ($products as $product) {
+        $this->user->cart->products()->attach($product->id, ['amount' => 1]);
+    }
+
+    $webhookController = new WebhookController;
+
+    $webhookController->handleCheckoutSessionCompleted($payload);
+
+    expect($this->user->cart->products_count)->toBe(0);
+
+    foreach ($products as $product) {
+        $quantity = $product->quantity;
+        $product->refresh();
+
+        expect($product->quantity)->toBe($quantity - 1);
+    }
 });
