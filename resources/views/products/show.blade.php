@@ -20,4 +20,6 @@
             <livewire:products.add-cart id="{{ $product->id }}" />
         </div>
     </div>
+
+    <livewire:products.reviews :paginator="$reviews" :product="$product" />
 </x-app-layout>
